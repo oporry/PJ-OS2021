@@ -1,0 +1,304 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 TIME</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+        body {
+
+            font-family: 'Oswald', sans-serif;
+            background-color: black;
+
+        }
+
+        #todayCalendar {
+            color: white;
+        }
+
+        #head-topic {
+            padding-top: 2%;
+            text-align: center;
+            color: white;
+        }
+
+        #container {
+            height: calc(100vh - 60px);
+            width: 100vw;
+            background-color: black;
+            padding: 2%;
+            overflow-y: auto;
+        }
+
+        .contentBlog {
+            width: 50%;
+            background-color: rgb(187, 187, 187);
+            padding: 2% 2% 2% 2%;
+            /*ความยาวของกล่องข้อความ*/
+            /*border-bottom: 80px solid rgb(82, 81, 81);*/
+            margin-bottom: 2%;
+            /*ความห่างกล่องข้อความ*/
+            border-radius: 10px;
+            /*ความโค้งมนกล่องข้อความ*/
+        }
+
+        .contentBody {
+            display: block;
+        }
+
+        * .contentBlog:hover .contentBody {
+            display: block;
+        }
+
+        #more {
+            display: none;
+        }
+
+        /* Content */
+        .content {
+            width: 550px;
+            height: 550px;
+            position: fixed;
+            top: 85px;
+            right: 35px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <!-- <a id="world-case"></a> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        style="background-color: rgba(255, 255, 255, 0.5) !important;">
+        <a class="navbar-brand" href="#">Covid-19 Update</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#world-case">World <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <div
+                        style="overflow: auto; width: 100%;height: 5vh; flex-direction: row;display: flex;">
+                        <div id="countriesList"
+                        style="overflow: auto; width: 100%;height: 5vh; flex-direction: row;display: flex;">
+                    </div>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control " id="seach-input" type="search" placeholder="Search"
+                    aria-label="Search" onkeyup="apiSeach()" style="padding: 1% 0 1% 0; border: 1px solid white; text-indent: 2%;">
+                <span class="btn btn-outline-light" id="basic-addon1" style="height: 100%;">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <!--<button class="btn btn-outline-light my-2 my-sm-0" type="button"  
+                     onclick="apiSeach()">Search</button> -->
+            </form>
+        </div>
+    </nav>
+
+    <div id="container"></div>
+
+    <div class="content">
+
+        <img src="covidvaccine.jpg" alt="Bear" style="position: static;right:100px;width:50%;height : 30%">
+        <h2>How COVID-19 Vaccines Work</h2>
+        <p>Different types of vaccines work in different ways to offer protection. But with all types of vaccines, the
+            body is left with a supply of “memory”<span id="dots">...</span><span id="more">
+                T-lymphocytes as well as B-lymphocytes that will remember how to fight that virus in the future.
+
+                It typically takes a few weeks after vaccination for the body to produce T-lymphocytes and
+                B-lymphocytes. Therefore, it is possible that a person could be infected with the virus that causes
+                COVID-19 just before or just after vaccination and then get sick because the vaccine did not have enough
+                time to provide protection.
+
+                Sometimes after vaccination, the process of building immunity can cause symptoms, such as fever. These
+                symptoms are normal and are signs that the body is building immunity.
+                Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+        <button onclick="myFunction()" id="myBtn">Read more</button>
+
+        <script>
+
+            //apiปฎิทิน
+            let allCountriesData;
+            var worldCaseBox;
+            var today = new Date();
+            var date = today.getDate() + "-" + (today.getMonth() + 1) + '-' + today.getFullYear();
+            var worldCaseObj = {
+                cases: 0,
+                todayCases: 0,
+                deaths: 0,
+                todayDeaths: 0,
+                recovered: 0,
+                todayRecovered: 0,
+                active: 0,
+                critical: 0
+            }
+
+            var container = document.querySelector("#container")
+            var content = "<h2 id='todayCalendar'>TO DAY : " + date + "</h2>"
+            var pre = ""
+            var countriesList = ""
+
+            //ดึงapi Data Covid-19
+            async function getCountriesData() {
+                let response = await fetch("https://corona.lmao.ninja/v2/countries");
+                console.log(response)
+                allCountriesData = await response.json();
+                return allCountriesData;
+            }
+
+            //ใช้api Data Covid-19
+            getCountriesData().then(allCountriesData => {
+                console.log(allCountriesData)
+                // document.querySelector("#countryName").innerHTML = data.country
+                allCountriesData.forEach(countryData => {
+                    worldCaseObj.cases += countryData.cases
+                    worldCaseObj.todayCases += countryData.todayCases
+                    worldCaseObj.deaths += countryData.deaths
+                    worldCaseObj.todayDeaths += countryData.todayDeaths
+                    worldCaseObj.recovered += countryData.recovered
+                    worldCaseObj.todayRecovered += countryData.todayRecovered
+                    worldCaseObj.active += countryData.active
+                    worldCaseObj.critical += countryData.critical
+                    //console.log(countryData.country.charAt(0))
+                    //console.log(pre.localeCompare(countryData.country.charAt(0)))
+                    if (pre.localeCompare(countryData.country.charAt(0))) {
+                        pre = countryData.country.charAt(0)
+                        countriesList += "<a class='nav-link' href='#" + countryData.country + "'>" + pre + "</a>"
+                    }
+                    content +=
+                        "<a id='" + countryData.country + "'></a>" +
+                        "<div class='contentBlog'>" +
+                        "<h2>" + countryData.country + "</h2>" +
+                        "<div class='contentBody'>" +
+                        "<img style='width:100px;height:75px;' src='" + countryData.countryInfo.flag + "'>" +
+                        "<h4>Cases: " + countryData.cases + " | " +
+                        "Today: " + countryData.todayCases + " | " +
+                        "Active: " + countryData.active + "</h4>" +
+                        "<h4>Deaths: " + countryData.deaths + " | " +
+                        "Today: " + countryData.todayDeaths + "</h4>" +
+                        "<h4>Recovered: " + countryData.recovered + " | " +
+                        "Critical: " + countryData.critical + "</h4>" +
+                        "</div>" +
+                        "</div>"
+                });
+                worldCaseBox =
+                    "<div class='contentBlog' id='world-case'>" +
+                    "<h2> WORLD CASE </h2>" +
+                    "<div class='contentBody'>" +
+                    "<h4>Cases: " + worldCaseObj.cases + " | " +
+                    "Today: " + worldCaseObj.todayCases + " | " +
+                    "Active: " + worldCaseObj.active + "</h4>" +
+                    "<h4>Deaths: " + worldCaseObj.deaths + " | " +
+                    "Today: " + worldCaseObj.todayDeaths + "</h4>" +
+                    "<h4>Recovered: " + worldCaseObj.recovered + " | " +
+                    "Critical: " + worldCaseObj.critical + "</h4>" +
+                    "</div>" +
+                    "</div>"
+                container.innerHTML = worldCaseBox + content;
+                document.getElementById("countriesList").innerHTML = countriesList;
+            });
+
+            function myFunction() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("myBtn");
+
+                if (dots.style.display === "none") {
+                    dots.style.display = "inline";
+                    btnText.innerHTML = "Read more";
+                    moreText.style.display = "none";
+                } else {
+                    dots.style.display = "none";
+                    btnText.innerHTML = "Read less";
+                    moreText.style.display = "inline";
+                }
+            }
+
+            function apiSeach() {
+                let value = document.getElementById('seach-input').value;
+                content = "<h2 id='todayCalendar'>TO DAY : " + date + "</h2>";
+
+                // Filter full text ver.
+
+                // let filterCountry = allCountriesData.filter(data => data.country == value);
+                // filterCountry.forEach(data => {
+                //     content +=
+                //         "<a id='" + data.country + "'></a>" +
+                //         "<div class='contentBlog'>" +
+                //         "<h2>" + data.country + "</h2>" +
+                //         "<div class='contentBody'>" +
+                //         "<img style='width:100px;height:75px;' src='" + data.countryInfo.flag + "'>" +
+                //         "<h4>Cases: " + data.cases + " | " +
+                //         "Today: " + data.todayCases + " | " +
+                //         "Active: " + data.active + "</h4>" +
+                //         "<h4>Deaths: " + data.deaths + " | " +
+                //         "Today: " + data.todayDeaths + "</h4>" +
+                //         "<h4>Recovered: " + data.recovered + " | " +
+                //         "Critical: " + data.critical + "</h4>" +
+                //         "</div>" +
+                //         "</div>"
+                // });
+
+                // Filter some text ver.
+
+                allCountriesData.forEach(countryData => {
+                    var lowerCountry = countryData.country.toLowerCase();
+                    console.log(lowerCountry);
+                    if (lowerCountry.includes(value.toLowerCase())) {
+                        content += 
+                        "<a id='" + countryData.country + "'></a>" +
+                        "<div class='contentBlog'>" +
+                        "<h2>" + countryData.country + "</h2>" +
+                        "<div class='contentBody'>" +
+                        "<img style='width:100px;height:75px;' src='" + countryData.countryInfo.flag + "'>" +
+                        "<h4>Cases: " + countryData.cases + " | " +
+                        "Today: " + countryData.todayCases + " | " +
+                        "Active: " + countryData.active + "</h4>" +
+                        "<h4>Deaths: " + countryData.deaths + " | " +
+                        "Today: " + countryData.todayDeaths + "</h4>" +
+                        "<h4>Recovered: " + countryData.recovered + " | " +
+                        "Critical: " + countryData.critical + "</h4>" +
+                        "</div>" +
+                        "</div>"
+                    }
+                })
+                container.innerHTML = worldCaseBox + content;
+
+            }
+
+        </script>
+</body>
+
+</html>
